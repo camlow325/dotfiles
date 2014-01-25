@@ -1,0 +1,5 @@
+# from http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
+vi-search-fix () {
+  zle vi-cmd-mode
+  zle .vi-history-search-backward
+}

@@ -10,6 +10,7 @@ export CLICOLOR=true
 fpath=($ZSH/functions $fpath)
 
 autoload -U $ZSH/functions/*(:t)
+autoload vi-search-fix
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -37,7 +38,12 @@ setopt HIST_REDUCE_BLANKS
 #   like: git comm-[tab]
 setopt complete_aliases
 
+setopt vi
+
 zle -N newtab
+
+# From http://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
+zle -N vi-search-fix
 
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
