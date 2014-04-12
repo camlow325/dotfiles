@@ -69,7 +69,7 @@ There's a few special files in the hierarchy.
 
 ## thanks
 
-I forked [Zach Holman](http://github.com/zachholman)'s, who forked
+I forked [Zach Holman](http://github.com/holman)'s, who forked
 [Ryan Bates](http://github.com/ryanb)', excellent
 [dotfiles](http://github.com/ryanb/dotfiles).
 A decent amount of the code in these dotfiles stem or are inspired from Ryan's
