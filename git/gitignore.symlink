@@ -3,3 +3,7 @@
 *~
 *.swp
 *.rbc
+.idea/
+*.iml
+.lein-failures
+.nrepl-port
