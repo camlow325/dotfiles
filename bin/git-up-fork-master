@@ -16,5 +16,5 @@ function doUpdate {
 
 git checkout master
 doUpdate
-git push
+git push origin master
 git checkout $branch

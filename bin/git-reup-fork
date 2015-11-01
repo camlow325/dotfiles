@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+if [ "$#" -ne 1 ]; then
+  echo "No branch provided"
+  exit
+fi
+
+basename=$(basename $0)
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+function doUpdate {
+  if [[ "$(basename $0)" == "git-reup-fork-master" ]]
+  then
+      git-reup upstream $1
+  else
+      git-up upstream $1
+  fi
+  git fetch --tags upstream
+}
+
+git checkout $1
+doUpdate $1
+git push origin $1
+git push origin --tags
+git checkout $branch

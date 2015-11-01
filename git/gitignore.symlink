@@ -7,3 +7,7 @@
 *.iml
 .lein-failures
 .nrepl-port
+.com_puppetlabs_geppetto_pptp_target/
+.metadata/
+.project
+Geppetto.AutoFileSystemLinked/
