@@ -3,7 +3,12 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+execute pathogen#infect()
 syntax on
-
 " Wrap gitcommit file types at the appropriate length
 filetype indent plugin on
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
