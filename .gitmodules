@@ -19,3 +19,6 @@
 [submodule "vim/vim.symlink/bundle/ack.vim"]
 	path = vim/vim.symlink/bundle/ack.vim
 	url = git://github.com/mileszs/ack.vim.git
+[submodule "z/z"]
+	path = z/z
+	url = git://github.com/rupa/z.git
