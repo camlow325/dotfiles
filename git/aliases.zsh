@@ -6,6 +6,15 @@ then
   alias git=$hub_path
 fi
 
+# For checkout completion function remapping
+alias __git-branch_main=_git_branch
+alias __git-checkout_main=_git_checkout
+alias __git-diff_main=_git_diff
+alias __git-fetch_main=_git_fetch
+alias __git-merge_main=_git_merge
+alias __git-pull_main=_git_pull
+alias __git-push_main=_git_push
+
 # The rest of my fun git aliases
 alias ga='git add'
 alias gb='git branch'
