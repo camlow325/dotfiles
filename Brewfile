@@ -1,7 +1,6 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
-tap 'puma/puma'
 
 brew 'ack'
 brew 'coreutils'
@@ -15,7 +14,6 @@ brew 'openssl'
 brew 'node'
 brew 'readline'
 brew 'postgresql'
-brew 'puma/puma/puma-dev'
 brew 'ruby-build'
 brew 'rbenv'
 brew 'roundup'
