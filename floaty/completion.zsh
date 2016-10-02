@@ -1,4 +1,5 @@
 compctl -K _floaty floaty
+compctl -K _sshvm sshvm
 
 _floaty_commands() {
   reply=(delete get help list modify query \
@@ -11,7 +12,7 @@ _floaty_oses() {
 }
 
 _floaty_vms() {
-  local vms="$(floaty list --active | grep "-" | cut -f2 -d' ')"
+  local vms="$(floaty list --active | awk '/-/ { print $2 }')"
   reply=("${(ps:\n:)vms}")
 }
 
@@ -46,4 +47,8 @@ _floaty() {
           reply=(--snapshot) ;;
       esac ;;
   esac
+}
+
+_sshvm() {
+  _floaty_vms
 }
