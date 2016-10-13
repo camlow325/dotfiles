@@ -33,18 +33,28 @@ _floaty() {
         help)
           _floaty_commands ;;
         list)
-          reply=(--active) ;;
+          reply=(--active --token --url --verbose) ;;
+        status|summary)
+          reply=(--url --verbose) ;;
+        token)
+          reply=(get delete status) ;;
       esac ;;
     *)
       case $word in
-        delete|snapshot)
+        delete)
           _floaty_vms ;;
         get)
           _floaty_oses ;;
+        list)
+          reply=(--active --token --url --verbose) ;;
         modify)
-          reply=(--lifetime --disk --tags) ;;
-        revert)
-          reply=(--snapshot) ;;
+          reply=(--disk --lifetime --tags --token --url --verbose) ;;
+        query|status|summary)
+          reply=(--url --verbose) ;;
+        revert|snapshot)
+          reply=(--token --url --verbose) ;;
+        token)
+          reply=(--token --url --user --verbose) ;;
       esac ;;
   esac
 }
