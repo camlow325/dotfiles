@@ -46,6 +46,17 @@ need_push () {
   fi
 }
 
+if (( $+commands[svn] ))
+then
+  svn="$commands[svn]"
+else
+  svn="/usr/bin/svn"
+fi
+
+svn_prompt_info() {
+  echo $($svn info 2>/dev/null | grep '^URL:' | egrep -o '(tags|branches)/[^/]+|trunk' | egrep -o '[^/]+$')
+}
+
 ruby_version() {
   if (( $+commands[rbenv] ))
   then
@@ -71,7 +82,14 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%0/%\/%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+# displaying ruby & git dirty info on each prompt seems slow on
+# Windows Subsystem for Linux
+if grep -q Microsoft /proc/version; then
+  export PROMPT=$'\n$(directory_name) $(git_prompt_info)$(svn_prompt_info)\n› '
+else
+  export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)$(svn_prompt_info)\n› '
+fi
+
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
