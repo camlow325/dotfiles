@@ -11,3 +11,4 @@
 .metadata/
 .project
 Geppetto.AutoFileSystemLinked/
+*.pyc
