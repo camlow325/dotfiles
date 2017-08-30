@@ -30,7 +30,12 @@ done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
-compinit -u
+# avoid security errors in Windows Subsystem for Linux
+if grep -q Microsoft /proc/version; then
+  compinit -C
+else
+  compinit
+fi
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}

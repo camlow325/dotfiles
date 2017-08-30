@@ -1,5 +1,4 @@
-# init according to man page
-if (( $+commands[rbenv] ))
+if (( $+commands[rbenv] )) && $(grep -qv Microsoft /proc/version)
 then
   eval "$(rbenv init -)"
 fi
