@@ -28,9 +28,19 @@ git_dirty() {
 }
 
 git_prompt_info () {
- ref=$($git symbolic-ref HEAD 2>/dev/null) || return
-# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
- echo "${ref#refs/heads/}"
+  ref=$($git symbolic-ref HEAD 2>/dev/null)
+  # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
+  echo "${ref#refs/heads/}"
+}
+
+git_prompt_no_dirty_info () {
+  ref=$($git symbolic-ref HEAD 2>/dev/null)
+  if [[ $ref == "" ]];
+  then
+    echo ""
+  else
+    echo "on %{$fg_bold[yellow]%}${ref#refs/heads/}%{$reset_color%}"
+  fi
 }
 
 unpushed () {
@@ -53,8 +63,14 @@ else
   svn="/usr/bin/svn"
 fi
 
-svn_prompt_info() {
-  echo $($svn info 2>/dev/null | grep '^URL:' | egrep -o '(tags|branches)/[^/]+|trunk' | egrep -o '[^/]+$')
+svn_prompt() {
+  ref=$($svn info 2>/dev/null | grep '^URL:' | egrep -o '(tags|branches)/[^/]+|trunk' | egrep -o '[^/]+$')
+  if [[ $ref == "" ]];
+  then
+    echo ""
+  else
+    echo "on %{$fg_bold[yellow]%}$ref%{$reset_color%}"
+  fi
 }
 
 ruby_version() {
@@ -101,9 +117,9 @@ directory_name() {
 # displaying ruby & git dirty info on each prompt seems slow on
 # Windows Subsystem for Linux
 if grep -q Microsoft /proc/version; then
-  export PROMPT=$'\n$(python_prompt)$(directory_name) $(git_prompt_info)\n› '
+  export PROMPT=$'\n$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
-  export PROMPT=$'\n$(rb_prompt)$(python_prompt)$(directory_name) $(git_dirty)$(need_push)$(svn_prompt_info)\n› '
+  export PROMPT=$'\n$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
