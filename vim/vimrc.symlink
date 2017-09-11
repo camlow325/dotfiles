@@ -10,7 +10,13 @@ set textwidth=79
 set autoindent
 set fileformat=unix
 set encoding=utf-8
+set nu
 colo torte
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4
 
 execute pathogen#infect()
 syntax on
