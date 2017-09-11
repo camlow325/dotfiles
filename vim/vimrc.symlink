@@ -5,6 +5,11 @@ set shiftwidth=2
 set expandtab
 set hlsearch
 set incsearch
+set foldmethod=indent
+set textwidth=79
+set autoindent
+set fileformat=unix
+set encoding=utf-8
 colo torte
 
 execute pathogen#infect()
@@ -16,3 +21,14 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile * match BadWhitespace /\s\+$/
+
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>r :YcmCompleter GoToReferences<CR>
+
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }

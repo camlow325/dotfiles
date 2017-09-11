@@ -1,11 +1,3 @@
-# Use `hub` as our git wrapper:
-#   http://defunkt.github.com/hub/
-hub_path=$(which hub 2>/dev/null)
-if (( $+commands[hub] ))
-then
-  alias git=$hub_path
-fi
-
 # For checkout completion function remapping
 alias __git-branch_main=_git_branch
 alias __git-checkout_main=_git_checkout
