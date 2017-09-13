@@ -10,6 +10,7 @@ set textwidth=79
 set autoindent
 set fileformat=unix
 set encoding=utf-8
+set laststatus=2
 set nu
 colo torte
 
@@ -38,3 +39,7 @@ let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": [],
     \ "passive_filetypes": [] }
+
+silent! python from powerline.vim import setup as powerline_setup
+silent! python powerline_setup()
+silent! python del powerline_setup
