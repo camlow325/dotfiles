@@ -21,7 +21,7 @@
 	url = git://github.com/mileszs/ack.vim.git
 [submodule "z/z"]
 	path = z/z
-	url = git://github.com/rupa/z.git
+	url = git://github.com/camlow325/z.git
 [submodule "vim/vim.symlink/bundle/syntastic"]
 	path = vim/vim.symlink/bundle/syntastic
 	url = git://github.com/vim-syntastic/syntastic.git
