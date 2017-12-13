@@ -110,6 +110,15 @@ python_prompt() {
   fi
 }
 
+node_prompt() {
+  if ! [[ -z $NODE_VIRTUAL_ENV ]]
+  then
+    echo "%{$fg_bold[white]%}$(basename $NODE_VIRTUAL_ENV)%{$reset_color%} "
+  else
+    echo ""
+  fi
+}
+
 directory_name() {
   echo "%{$fg_bold[cyan]%}%0/%\/%{$reset_color%}"
 }
@@ -117,9 +126,9 @@ directory_name() {
 # displaying ruby & git dirty info on each prompt seems slow on
 # Windows Subsystem for Linux
 if grep -q Microsoft /proc/version; then
-  export PROMPT=$'\n$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
+  export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
-  export PROMPT=$'\n$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
+  export PROMPT=$'\n$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
