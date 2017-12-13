@@ -12,3 +12,6 @@
 .project
 Geppetto.AutoFileSystemLinked/
 *.pyc
+dxlclient.log
+rstdocs_clients.py
+target/
