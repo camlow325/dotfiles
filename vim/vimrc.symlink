@@ -21,8 +21,10 @@ au BufNewFile,BufRead *.py
 
 execute pathogen#infect()
 syntax on
-" Wrap gitcommit file types at the appropriate length
+
 filetype indent plugin on
+" Wrap gitcommit file types at the appropriate length
+au FileType gitcommit set tw=72
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -39,6 +41,9 @@ let g:syntastic_mode_map = {
     \ "mode": "passive",
     \ "active_filetypes": [],
     \ "passive_filetypes": [] }
+
+let g:ycm_filetype_blacklist = {
+    \ "gitcommit" : 1 }
 
 silent! python from powerline.vim import setup as powerline_setup
 silent! python powerline_setup()
