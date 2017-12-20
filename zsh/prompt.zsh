@@ -104,7 +104,7 @@ python_version() {
 python_prompt() {
   if ! [[ -z $VIRTUAL_ENV ]]
   then
-    echo "%{$fg_bold[magenta]%}$(basename $VIRTUAL_ENV)%{$reset_color%} "
+    echo "%{$fg_bold[magenta]%}$VIRTUAL_ENV:t%{$reset_color%} "
   else
     echo ""
   fi
@@ -113,7 +113,7 @@ python_prompt() {
 node_prompt() {
   if ! [[ -z $NODE_VIRTUAL_ENV ]]
   then
-    echo "%{$fg_bold[white]%}$(basename $NODE_VIRTUAL_ENV)%{$reset_color%} "
+    echo "%{$fg_bold[white]%}$NODE_VIRTUAL_ENV:t%{$reset_color%} "
   else
     echo ""
   fi
