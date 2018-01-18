@@ -31,7 +31,7 @@ done
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 # avoid security errors in Windows Subsystem for Linux
-if grep -q Microsoft /proc/version; then
+if grep -q Microsoft /proc/version 2>/dev/null; then
   compinit -C
 else
   compinit

@@ -125,7 +125,7 @@ directory_name() {
 
 # displaying ruby & git dirty info on each prompt seems slow on
 # Windows Subsystem for Linux
-if grep -q Microsoft /proc/version; then
+if grep -q Microsoft /proc/version 2>/dev/null; then
   export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
   export PROMPT=$'\n$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
