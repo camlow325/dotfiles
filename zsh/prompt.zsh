@@ -119,6 +119,22 @@ node_prompt() {
   fi
 }
 
+kube_prompt() {
+  type kube_context >/dev/null 2>/dev/null
+  if [ $# -eq 0 ]
+  then
+    context=$(kube_context)
+    if ! [[ -z "$context" ]]
+    then
+      echo "%{$fg_bold[white]%}$context:t%{$reset_color%} "
+    else
+      echo ""
+    fi
+  else
+    echo ""
+  fi
+}
+
 directory_name() {
   echo "%{$fg_bold[cyan]%}%0/%\/%{$reset_color%}"
 }
@@ -128,7 +144,7 @@ directory_name() {
 if grep -q Microsoft /proc/version 2>/dev/null; then
   export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
-  export PROMPT=$'\n$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
+  export PROMPT=$'\n$(kube_prompt)$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
