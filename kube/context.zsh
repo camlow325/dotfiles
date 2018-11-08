@@ -23,7 +23,7 @@ dashboard() {
             echo "remember, it may take 30 seconds to actually display the dashboard."
             echo "also, you may need to accept the invalid cert in chrome."
 
-            if (( $+commands[xdg-open] )); then
+            if [[ $+commands[xdg-open] && ! -z "$DISPLAY" ]]; then
                 xdg-open https://localhost:$local_port &
             fi
             echo "dashboard to https://localhost:$local_port"
