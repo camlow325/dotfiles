@@ -154,9 +154,9 @@ cmd + alt - 6 : chunkc tiling::desktop --focus 6
 # cmd + alt - 7 : chunkc tiling::desktop --focus 7
 
 # send window to desktop
-shift + alt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
-shift + alt - z : chunkc tiling::window --send-to-desktop prev
-shift + alt - c : chunkc tiling::window --send-to-desktop next
+# shift + alt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
+# shift + alt - z : chunkc tiling::window --send-to-desktop prev
+# shift + alt - c : chunkc tiling::window --send-to-desktop next
 shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
 shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
 shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
@@ -198,10 +198,10 @@ shift + alt - w : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-windo
 shift + alt - d : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
 
 # decrease region size
-shift + ctrl - a : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
-shift + ctrl - s : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
-shift + ctrl - w : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
-shift + ctrl - d : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+shift + alt - z : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+shift + alt - x : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+shift + alt - c : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+shift + alt - v : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
 
 # set insertion point for focused container
 ctrl + alt - f : chunkc tiling::window --use-insertion-point cancel
