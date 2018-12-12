@@ -1,4 +1,4 @@
-if (( $+commands[rbenv] )) && $(grep -qv Microsoft /proc/version 2>/dev/null)
+if (( $+commands[rbenv] ))
 then
   eval "$(rbenv init -)"
 fi
