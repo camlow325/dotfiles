@@ -22,7 +22,16 @@ dashboard() {
             echo "creating dashboard to kubectl context \"$context\": port forward $dashboard_pod:$dashboard_port to https://localhost:$local_port"
             echo "remember, it may take 30 seconds to actually display the dashboard."
             echo "also, you may need to accept the invalid cert in chrome."
-
+            echo ""
+            echo $context | grep -s -q "\-sa"
+            if [ $? -eq 0 ] ; then
+                # this is a serviceaccount context.  print out bearer token
+                echo "log into kubernetes dashboard using your bearer token:"
+                echo ""
+                USER=$(kubectl config view -o jsonpath="{.contexts[?(@.name == \"$context\")].context.user}")
+                echo `kubectl config view -o jsonpath="{.users[?(@.name == \"$USER\")].user.token}"`
+                echo ""
+            fi
             if [[ $+commands[xdg-open] && ! -z "$DISPLAY" ]]; then
                 xdg-open https://localhost:$local_port &
             fi
