@@ -123,10 +123,18 @@ kube_prompt() {
   type kube_context >/dev/null 2>/dev/null
   if [ $# -eq 0 ]
   then
-    context=$(kube_context)
-    if ! [[ -z "$context" ]]
+    kube_prompt_text=$(kube_context)
+    if ! [[ -z "$kube_prompt_text" ]]
     then
-      echo "%{$fg_bold[white]%}$context:t%{$reset_color%} "
+      namespace=$(kube_namespace)
+      if ! [[ -z "$namespace" ]]
+      then
+        kube_prompt_text="${kube_prompt_text}|${namespace}"
+      fi
+    fi
+    if ! [[ -z "$kube_prompt_text" ]]
+    then
+      echo -e "%{$fg_bold[white]%}$kube_prompt_text:t%{$reset_color%} "
     else
       echo ""
     fi

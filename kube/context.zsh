@@ -4,6 +4,11 @@ kube_context() {
   fi
 }
 
+kube_namespace(){
+  NS=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+  if [ -z $NS ]; then echo "default"; else echo $NS; fi
+}
+
 if (( $+commands[kubectl] )); then
   if [[ -z $(kube_context) ]]; then
     echo "No kube context yet so creating 'none' as default"
