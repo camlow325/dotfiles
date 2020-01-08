@@ -143,6 +143,16 @@ kube_prompt() {
   fi
 }
 
+terraform_prompt() {
+  if [[ -d ".terraform" ]] && (( $+commands[terraform] ))
+  then
+    terraform_prompt_text=$(terraform workspace show)
+    echo -e "%{$fg_bold[blue]%}$terraform_prompt_text:t%{$reset_color%} "
+  else
+    echo ""
+  fi
+}
+
 directory_name() {
   echo "%{$fg_bold[cyan]%}%0/%\/%{$reset_color%}"
 }
@@ -152,7 +162,7 @@ directory_name() {
 if grep -q Microsoft /proc/version 2>/dev/null; then
   export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
-  export PROMPT=$'\n$(kube_prompt)$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
+  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
