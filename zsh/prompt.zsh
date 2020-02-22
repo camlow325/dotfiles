@@ -14,16 +14,14 @@ git_branch() {
 }
 
 git_dirty() {
-  if $(! $git status -s &> /dev/null)
+  if ! git_status=$($git status --porcelain 2>/dev/null)
   then
     echo ""
+  elif [[ "$git_status" == "" ]]
+  then
+    echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
   else
-    if [[ $($git status --porcelain) == "" ]]
-    then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
-    else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
-    fi
+    echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
   fi
 }
 
@@ -53,23 +51,6 @@ need_push () {
     echo " "
   else
     echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
-  fi
-}
-
-if (( $+commands[svn] ))
-then
-  svn="$commands[svn]"
-else
-  svn="/usr/bin/svn"
-fi
-
-svn_prompt() {
-  ref=$($svn info 2>/dev/null | grep '^URL:' | egrep -o '(tags|branches)/[^/]+|trunk' | egrep -o '[^/]+$')
-  if [[ $ref == "" ]];
-  then
-    echo ""
-  else
-    echo "on %{$fg_bold[yellow]%}$ref%{$reset_color%}"
   fi
 }
 
@@ -162,7 +143,7 @@ directory_name() {
 if grep -q Microsoft /proc/version 2>/dev/null; then
   export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
-  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(svn_prompt)$(git_dirty)$(need_push)\n› '
+  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
