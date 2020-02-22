@@ -15,7 +15,7 @@
 	url = git://github.com/vim-scripts/paredit.vim.git
 [submodule "vim/vim.symlink/bundle/nerdcommenter"]
 	path = vim/vim.symlink/bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+	url = git://github.com/preservim/nerdcommenter.git
 [submodule "vim/vim.symlink/bundle/ack.vim"]
 	path = vim/vim.symlink/bundle/ack.vim
 	url = git://github.com/mileszs/ack.vim.git
