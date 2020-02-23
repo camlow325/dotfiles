@@ -143,7 +143,7 @@ directory_name() {
 if grep -q Microsoft /proc/version 2>/dev/null; then
   export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
 else
-  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(node_prompt)$(rb_prompt)$(python_prompt)$(directory_name) $(git_dirty)$(need_push)\n› '
+  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(python_prompt)$(directory_name) $(git_dirty)$(need_push)\n› '
 fi
 
 set_prompt () {
@@ -151,6 +151,6 @@ set_prompt () {
 }
 
 precmd() {
-  #title "zsh" "%m" "%55<...<%~"
+  title "zsh" "%m" "%55<...<%~"
   set_prompt
 }
