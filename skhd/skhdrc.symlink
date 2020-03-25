@@ -84,7 +84,7 @@
 # ]
 
 # open iTerm2
-cmd - return : open -na "/Applications/iTerm 2.app"
+# cmd - return : open -na "/Applications/iTerm 2.app"
 
 # open qutebrowser
 # cmd + shift - return : ~/Scripts/qtb.sh
