@@ -10,34 +10,29 @@ else
 fi
 
 git_branch() {
-  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  ref=$($git symbolic-ref HEAD 2>/dev/null)
+  echo "${ref#refs/heads/}"
 }
 
-git_dirty() {
+git_prompt() {
   if ! git_status=$($git status --porcelain 2>/dev/null)
   then
     echo ""
   elif [[ "$git_status" == "" ]]
   then
-    echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+    echo "on %{$fg_bold[green]%}$(git_branch)%{$reset_color%}"
   else
-    echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+    echo "on %{$fg_bold[red]%}$(git_branch)%{$reset_color%}"
   fi
 }
 
-git_prompt_info () {
-  ref=$($git symbolic-ref HEAD 2>/dev/null)
-  # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
-  echo "${ref#refs/heads/}"
-}
-
-git_prompt_no_dirty_info () {
-  ref=$($git symbolic-ref HEAD 2>/dev/null)
+git_prompt_no_dirty() {
+  ref=$(git_branch)
   if [[ $ref == "" ]];
   then
     echo ""
   else
-    echo "on %{$fg_bold[yellow]%}${ref#refs/heads/}%{$reset_color%}"
+    echo "on %{$fg_bold[yellow]%}$(git_branch)%{$reset_color%}"
   fi
 }
 
@@ -141,9 +136,9 @@ directory_name() {
 # displaying ruby & git dirty info on each prompt seems slow on
 # Windows Subsystem for Linux
 if grep -q Microsoft /proc/version 2>/dev/null; then
-  export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty_info)\n› '
+  export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty)\n› '
 else
-  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(python_prompt)$(directory_name) $(git_dirty)$(need_push)\n› '
+  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(python_prompt)$(directory_name) $(git_prompt)$(need_push)\n› '
 fi
 
 set_prompt () {

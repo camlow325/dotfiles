@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Reset the currently checked out local branch to the latest on the remote.
+#
+# $1 - Remote name (defaults to "origin")
+
+if ! ref=$(git symbolic-ref HEAD 2>/dev/null); then
+  echo "can't reset, no git branch checked out" >&2
+  exit 1
+fi
+current_branch="${ref#refs/heads/}"
+
+remote=${1:-origin}
+git fetch "$remote" "$current_branch"
+git reset --hard "${remote}/${current_branch}"
