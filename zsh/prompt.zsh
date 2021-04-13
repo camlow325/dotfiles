@@ -133,12 +133,24 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%0/%\/%{$reset_color%}"
 }
 
+battery_status() {
+  if test ! "$(uname)" = "Darwin"
+  then
+    exit 0
+  fi
+
+  if [[ $(sysctl -n hw.model) == *"Book"* ]]
+  then
+    $ZSH/bin/battery-status
+  fi
+}
+
 # displaying ruby & git dirty info on each prompt seems slow on
 # Windows Subsystem for Linux
 if grep -q Microsoft /proc/version 2>/dev/null; then
-  export PROMPT=$'\n$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty)\n› '
+  export PROMPT=$'\n$(battery_status)$(node_prompt)$(python_prompt)$(directory_name) $(git_prompt_no_dirty)\n› '
 else
-  export PROMPT=$'\n$(kube_prompt)$(terraform_prompt)$(python_prompt)$(directory_name) $(git_prompt)$(need_push)\n› '
+  export PROMPT=$'\n$(battery_status)$(kube_prompt)$(terraform_prompt)$(python_prompt)$(directory_name) $(git_prompt)$(need_push)\n› '
 fi
 
 set_prompt () {
