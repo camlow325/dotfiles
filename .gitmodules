@@ -30,4 +30,4 @@
 	url = git://github.com/nvie/vim-flake8
 [submodule "vim/vim.symlink/bundle/YouCompleteMe"]
 	path = vim/vim.symlink/bundle/YouCompleteMe
-	url = git://github.com/Valloric/YouCompleteMe
+	url = git@github.com:ycm-core/YouCompleteMe.git
