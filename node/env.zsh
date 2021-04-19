@@ -1,1 +1,2 @@
 export NODE_VIRTUAL_ENV_DISABLE_PROMPT=y
+export N_PREFIX=$HOME/.local
