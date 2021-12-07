@@ -5,6 +5,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 # executables can take precedence.
 if (( $+commands[pyenv] ))
 then
+  eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 
   if pyenv commands | grep -q ^virtualenv-init$; then
