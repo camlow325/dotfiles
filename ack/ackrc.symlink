@@ -1,3 +1,6 @@
 --type-set=puppet=.pp
 --type-set=conf=.conf
 --type-set=md=.md,.markdown
+--type-set=hcl=.hcl
+--type-set=terraform=.tf
+--type-set=tf=.tf
