@@ -15,7 +15,7 @@ git_branch() {
 }
 
 git_prompt() {
-  if ! git_status=$($git status --porcelain 2>/dev/null)
+  if ! git_status=$($git status --porcelain --ignore-submodules 2>/dev/null)
   then
     echo ""
   elif [[ "$git_status" == "" ]]
