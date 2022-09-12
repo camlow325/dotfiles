@@ -1,33 +1,33 @@
 [submodule "vim/vim.symlink/bundle/vim-fireplace"]
 	path = vim/vim.symlink/bundle/vim-fireplace
-	url = git://github.com/tpope/vim-fireplace.git
+	url = https://github.com/tpope/vim-fireplace.git
 [submodule "vim/vim.symlink/bundle/vim-clojure-static"]
 	path = vim/vim.symlink/bundle/vim-clojure-static
-	url = git://github.com/guns/vim-clojure-static.git
+	url = https://github.com/guns/vim-clojure-static.git
 [submodule "vim/vim.symlink/bundle/rainbow_parentheses.vim"]
 	path = vim/vim.symlink/bundle/rainbow_parentheses.vim
-	url = git://github.com/kien/rainbow_parentheses.vim.git
+	url = https://github.com/kien/rainbow_parentheses.vim.git
 [submodule "vim/vim.symlink/bundle/vim-salve"]
 	path = vim/vim.symlink/bundle/vim-salve
-	url = git://github.com/tpope/vim-salve.git
+	url = https://github.com/tpope/vim-salve.git
 [submodule "vim/vim.symlink/bundle/paredit.vim"]
 	path = vim/vim.symlink/bundle/paredit.vim
-	url = git://github.com/vim-scripts/paredit.vim.git
+	url = https://github.com/vim-scripts/paredit.vim.git
 [submodule "vim/vim.symlink/bundle/nerdcommenter"]
 	path = vim/vim.symlink/bundle/nerdcommenter
-	url = git://github.com/preservim/nerdcommenter.git
+	url = https://github.com/preservim/nerdcommenter.git
 [submodule "vim/vim.symlink/bundle/ack.vim"]
 	path = vim/vim.symlink/bundle/ack.vim
-	url = git://github.com/mileszs/ack.vim.git
+	url = https://github.com/mileszs/ack.vim.git
 [submodule "z/z"]
 	path = z/z
-	url = git://github.com/camlow325/z.git
+	url = https://github.com/camlow325/z.git
 [submodule "vim/vim.symlink/bundle/syntastic"]
 	path = vim/vim.symlink/bundle/syntastic
-	url = git://github.com/vim-syntastic/syntastic.git
+	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/vim.symlink/bundle/vim-flake8"]
 	path = vim/vim.symlink/bundle/vim-flake8
-	url = git://github.com/nvie/vim-flake8
+	url = https://github.com/nvie/vim-flake8
 [submodule "vim/vim.symlink/bundle/YouCompleteMe"]
 	path = vim/vim.symlink/bundle/YouCompleteMe
-	url = git@github.com:ycm-core/YouCompleteMe.git
+	url = https://github.com/ycm-core/YouCompleteMe.git
