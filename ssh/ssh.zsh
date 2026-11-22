@@ -15,4 +15,8 @@ if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
     agent_start
 fi
 
+if [ -S "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent.sock" ]; then
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/agent.sock"
+fi
+
 unset env
