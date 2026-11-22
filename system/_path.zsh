@@ -11,14 +11,6 @@ then
   if pyenv commands | grep -q ^virtualenv-init$; then
     eval "$(pyenv virtualenv-init -)"
   fi
-
-  if (( $+commands[awsume] ))
-  then
-    alias awsume=". $(pyenv which awsume)"
-  fi
-elif (( $+commands[awsume] ))
-then
-  alias awsume=". awsume"
 fi
 
 if (( $+commands[rbenv] ))
